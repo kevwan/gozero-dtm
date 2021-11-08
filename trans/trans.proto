@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "pb";
+
+package trans;
+
+service TransSvc {
+  rpc TransIn(AdjustInfo)  returns (Response);
+  rpc TransOut(AdjustInfo)  returns (Response);
+}
+
+message AdjustInfo {
+  int64 Amount = 1;
+  int64 UserID = 2;
+}
+
+message Response {
+}

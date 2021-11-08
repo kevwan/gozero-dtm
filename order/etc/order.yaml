@@ -1,0 +1,5 @@
+Name: order.rpc
+ListenOn: 127.0.0.1:50090
+Trans:
+  Endpoints:
+    - localhost:50091

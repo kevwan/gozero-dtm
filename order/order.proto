@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "pb";
+
+package order;
+
+service OrderSvc {
+  rpc Transfer(TransferInfo)  returns (Response);
+}
+
+message TransferInfo {
+  int64 Amount = 1; // transfer amount, unit cent
+  int64 FromID = 2;
+  int64 ToID = 3;
+}
+
+message Response {
+}
