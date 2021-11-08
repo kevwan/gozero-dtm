@@ -3,8 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"syscall"
-	"time"
 
 	"github.com/kevwan/gozero-dtm/order/internal/config"
 	"github.com/kevwan/gozero-dtm/order/internal/server"
@@ -37,11 +35,6 @@ func main() {
 		}
 	})
 	defer s.Stop()
-
-	go func() {
-		time.Sleep(time.Second * 5)
-		syscall.Kill(syscall.Getpid(), syscall.SIGTERM)
-	}()
 
 	fmt.Printf("Starting rpc server at %s...\n", c.ListenOn)
 	s.Start()
