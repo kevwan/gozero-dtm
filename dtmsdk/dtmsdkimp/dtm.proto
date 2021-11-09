@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option go_package = "github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp";
+
+package dtmsdkimp;
+
+service DtmSvc {
+  // rpc RegisterBranch(DtmBranchRequest)  returns (google.protobuf.Empty) {}
+  rpc Submit(DtmRequest)  returns (google.protobuf.Empty) {}
+}
+
+
+message DtmRequest {
+  string Gid = 1;
+  string TransType = 2;
+  string TransOptions = 3;
+  string CustomedData = 4;
+  repeated bytes BinPayloads = 5; // for MSG/SAGA branch payloads
+  string QueryPrepared = 6; // for MSG
+  string Steps = 7;
+}
+
+
+// message DtmBranchRequest {
+//   string Gid = 1;
+//   string TransType = 2;
+//   string BranchID = 3;
+//   string Op = 4;
+//   map<string, string> Data = 5;
+//   bytes BusiPayload = 6;
+// }
+
