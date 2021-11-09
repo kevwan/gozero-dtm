@@ -6,6 +6,7 @@ import (
 	trans "github.com/kevwan/gozero-dtm/trans/pb"
 )
 
+// TODO 目前的这个例子，是没有走注册发现的，还需要做一个服务发现版本的，那个url应当怎么写？
 func sagaCase() {
 	d1 := []byte{}
 	info1 := trans.AdjustInfo{Amount: 30, UserID: 1}
