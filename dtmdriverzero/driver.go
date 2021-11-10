@@ -5,8 +5,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-type zeroDriver struct {
-}
+type zeroDriver struct{}
 
 func (z *zeroDriver) GetName() string {
 	return "gozero"

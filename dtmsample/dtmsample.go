@@ -35,8 +35,8 @@ func sagaCase2() {
 		Add(transsvr+"/TransIn", transsvr+"/TransInRevert", req)
 	err := saga.Submit()
 	dtmsdkimp.PanicIf(err != nil, err)
-
 }
+
 func main() {
 	sagaRawCase()
 	// sagaCase2()  // TARGET

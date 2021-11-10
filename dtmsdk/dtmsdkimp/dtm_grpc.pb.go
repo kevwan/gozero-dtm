@@ -4,6 +4,7 @@ package dtmsdkimp
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -50,8 +51,7 @@ type DtmSvcServer interface {
 }
 
 // UnimplementedDtmSvcServer must be embedded to have forward compatible implementations.
-type UnimplementedDtmSvcServer struct {
-}
+type UnimplementedDtmSvcServer struct{}
 
 func (UnimplementedDtmSvcServer) Submit(context.Context, *DtmRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Submit not implemented")

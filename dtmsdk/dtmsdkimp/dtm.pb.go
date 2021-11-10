@@ -7,11 +7,12 @@
 package dtmsdkimp
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -160,11 +161,14 @@ func file_dtmsdk_dtmsdkimp_dtm_proto_rawDescGZIP() []byte {
 	return file_dtmsdk_dtmsdkimp_dtm_proto_rawDescData
 }
 
-var file_dtmsdk_dtmsdkimp_dtm_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_dtmsdk_dtmsdkimp_dtm_proto_goTypes = []interface{}{
-	(*DtmRequest)(nil),    // 0: dtmsdkimp.DtmRequest
-	(*emptypb.Empty)(nil), // 1: google.protobuf.Empty
-}
+var (
+	file_dtmsdk_dtmsdkimp_dtm_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+	file_dtmsdk_dtmsdkimp_dtm_proto_goTypes  = []interface{}{
+		(*DtmRequest)(nil),    // 0: dtmsdkimp.DtmRequest
+		(*emptypb.Empty)(nil), // 1: google.protobuf.Empty
+	}
+)
+
 var file_dtmsdk_dtmsdkimp_dtm_proto_depIdxs = []int32{
 	0, // 0: dtmsdkimp.DtmSvc.Submit:input_type -> dtmsdkimp.DtmRequest
 	1, // 1: dtmsdkimp.DtmSvc.Submit:output_type -> google.protobuf.Empty

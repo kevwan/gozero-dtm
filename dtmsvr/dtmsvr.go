@@ -28,6 +28,7 @@ func startRPCSvc(sd *grpc.ServiceDesc, svc interface{}, port int64) {
 	}()
 	log.Printf("service: %s serv at port %d\n", sd.ServiceName, port)
 }
+
 func main() {
 	startRPCSvc(&dtmsdkimp.DtmSvc_ServiceDesc, &svr.DtmServer{}, 59001)
 

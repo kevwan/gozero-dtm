@@ -11,19 +11,19 @@ type SagaGrpc struct {
 }
 
 // NewSagaGrpc create a saga
-func NewSagaGrpc(server string, gid string) *SagaGrpc {
+func NewSagaGrpc(server, gid string) *SagaGrpc {
 	return &SagaGrpc{TransBase: dtmsdkimp.TransBase{Dtm: server, Gid: gid}}
 }
 
 // Add add a saga step
-func (s *SagaGrpc) Add(action string, compensate string, payload proto.Message) *SagaGrpc {
+func (s *SagaGrpc) Add(action, compensate string, payload proto.Message) *SagaGrpc {
 	s.Steps = append(s.Steps, map[string]string{"action": action, "compensate": compensate})
 	s.BinPayloads = append(s.BinPayloads, dtmsdkimp.MustProtoMarshal(payload))
 	return s
 }
 
 // AddBin add a saga step with bin payload
-func (s *SagaGrpc) AddBin(action string, compensate string, payload []byte) *SagaGrpc {
+func (s *SagaGrpc) AddBin(action, compensate string, payload []byte) *SagaGrpc {
 	s.Steps = append(s.Steps, map[string]string{"action": action, "compensate": compensate})
 	s.BinPayloads = append(s.BinPayloads, payload)
 	return s

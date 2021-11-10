@@ -13,8 +13,10 @@ type Driver interface {
 	RegisterService(url string, localPort int, registerFn func(*grpc.Server))
 }
 
-var drivers = map[string]Driver{}
-var defaultDriver Driver = nil
+var (
+	drivers              = map[string]Driver{}
+	defaultDriver Driver = nil
+)
 
 // Register register driver
 func Register(driver Driver) {
