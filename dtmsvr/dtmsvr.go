@@ -30,5 +30,10 @@ func startRPCSvc(sd *grpc.ServiceDesc, svc interface{}, port int64) {
 }
 func main() {
 	startRPCSvc(&dtmsdkimp.DtmSvc_ServiceDesc, &svr.DtmServer{}, 59001)
+
+	// TARGET can also be "k8s://mynamespace/dtmservice:3456")
+	// dtmdriver.GetDriver("zero").RegisterService("etcd://127.0.0.1:2379,127.0.0.1:2380/dtmservice", 59001, func(s *grpc.Server) {
+	// 	s.RegisterService(&dtmsdkimp.DtmSvc_ServiceDesc, &svr.DtmServer{})
+	// })
 	time.Sleep(3000 * time.Second)
 }
