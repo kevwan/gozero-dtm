@@ -2,7 +2,6 @@ package dtmdriverzero
 
 import (
 	"github.com/kevwan/gozero-dtm/dtmdriver"
-	"google.golang.org/grpc"
 )
 
 type zeroDriver struct{}
@@ -12,11 +11,11 @@ func (z *zeroDriver) GetName() string {
 }
 
 func (z *zeroDriver) RegisterGrpcResolver() {
-	// TODO, register gozero grpc resolver
+	// TODO, 注册gozero支持的几种schema，直连/etcd/k8s
 }
 
-func (z *zeroDriver) RegisterService(url string, localPort int, registerFn func(*grpc.Server)) {
-	// TODO register a service to url
+func (z *zeroDriver) RegisterService(url string, endpoint string) {
+	// TODO 将endpoint上的服务，注册到url，仅需要完成etcd这种形式
 }
 
 func init() {

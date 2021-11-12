@@ -2,15 +2,13 @@ package dtmdriver
 
 import (
 	"fmt"
-
-	"google.golang.org/grpc"
 )
 
 // Driver interface to do service register and discover
 type Driver interface {
 	GetName() string
 	RegisterGrpcResolver()
-	RegisterService(url string, localPort int, registerFn func(*grpc.Server))
+	RegisterService(url string, endpoint string)
 }
 
 var (
