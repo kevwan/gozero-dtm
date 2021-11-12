@@ -20,9 +20,8 @@ func sagaRawCase() {
 
 func sagaCase() {
 	dtmdriverzero.RegisterAsDefault()
-	dtmurl := "etcd://127.0.0.1:2379,127.0.0.1:2380/dtmservice"       // TARGET can also be "k8s://mynamespace/dtmservice:3456"
-	transsvr := "etcd://127.0.0.1:2379,127.0.0.1:2380/trans.TransSvc" // TARGET can also be "k8s://mynamespace/trans.TransSvc:3456"
-	saga := dtmsdk.NewSagaGrpc(dtmurl, "gid2").
+	transsvr := "etcd://127.0.0.1:2379,127.0.0.1:2380/trans.TransSvc" // TODO 这个地方能够从trans的客户端便捷的获取url，而不是写死或手动拼凑
+	saga := dtmsdk.NewSagaGrpc(dtmsdk.DtmAddr, "gid2").
 		Add(transsvr+"/TransOut", transsvr+"/TransOutRevert", outReq).
 		Add(transsvr+"/TransIn", transsvr+"/TransInRevert", inReq)
 	err := saga.Submit()
