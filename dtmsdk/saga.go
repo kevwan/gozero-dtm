@@ -6,7 +6,7 @@ import (
 )
 
 // DtmAddr etcd url for DtmServer
-const DtmAddr = "etcd://127.0.0.1:2379,127.0.0.1:2380/dtmservice" // TODO 改为实际的etcd服务注册/发现的地址
+const DtmAddr = "etcd://127.0.0.1:2379/dtmservice" // TODO 改为实际的etcd服务注册/发现的地址
 
 // SagaGrpc struct of saga
 type SagaGrpc struct {

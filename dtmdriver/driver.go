@@ -8,7 +8,7 @@ import (
 type Driver interface {
 	GetName() string
 	RegisterGrpcResolver()
-	RegisterService(url string, endpoint string)
+	RegisterService(url string, endpoint string) error
 }
 
 var (
