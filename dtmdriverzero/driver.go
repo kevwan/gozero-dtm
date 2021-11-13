@@ -42,8 +42,3 @@ func (z *zeroDriver) RegisterService(target string, endpoint string) error {
 func init() {
 	dtmdriver.Register(&zeroDriver{})
 }
-
-// RegisterAsDefault register zero driver as default driver
-func RegisterAsDefault() {
-	dtmdriver.RegisterAsDefault(&zeroDriver{})
-}

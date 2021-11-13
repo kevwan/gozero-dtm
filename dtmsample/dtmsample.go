@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/kevwan/gozero-dtm/dtmdriverzero"
 	"github.com/kevwan/gozero-dtm/dtmsdk"
 	"github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp"
 	trans "github.com/kevwan/gozero-dtm/trans/pb"
@@ -19,7 +18,6 @@ func sagaRawCase() {
 }
 
 func sagaCase() {
-	dtmdriverzero.RegisterAsDefault()
 	transsvr := "etcd://127.0.0.1:2379,127.0.0.1:2380/trans.TransSvc" // TODO 这个地方能够从trans的客户端便捷的获取url，而不是写死或手动拼凑
 	saga := dtmsdk.NewSagaGrpc(dtmsdk.DtmAddr, "gid2").
 		Add(transsvr+"/TransOut", transsvr+"/TransOutRevert", outReq).

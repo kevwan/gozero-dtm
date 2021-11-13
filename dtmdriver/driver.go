@@ -12,31 +12,18 @@ type Driver interface {
 }
 
 var (
-	drivers              = map[string]Driver{}
-	defaultDriver Driver = nil
+	drivers = map[string]Driver{}
 )
 
-// Register register driver
+// Register used by each driver writer
 func Register(driver Driver) {
 	drivers[driver.GetName()] = driver
 }
 
-// RegisterAsDefault register driver as default. only one default is allowed
-func RegisterAsDefault(driver Driver) error {
-	if defaultDriver != nil && defaultDriver.GetName() != driver.GetName() {
-		return fmt.Errorf("already registered a default driver: %s", defaultDriver.GetName())
+func MustGetDriver(name string) Driver {
+	v := drivers[name]
+	if v == nil {
+		panic(fmt.Errorf("no dtm driver with name: %s has been registered", name))
 	}
-	defaultDriver = driver
-	Register(driver)
-	return nil
-}
-
-// GetDefault get the default driver
-func GetDefault() Driver {
-	return defaultDriver
-}
-
-// GetDriver get the driver by name
-func GetDriver(name string) Driver {
-	return drivers[name]
+	return v
 }
