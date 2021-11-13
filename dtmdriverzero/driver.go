@@ -30,7 +30,7 @@ func (z *zeroDriver) RegisterService(target string, endpoint string) error {
 
 	switch u.Scheme {
 	case kindEtcd:
-		pub := discov.NewPublisher(strings.Split(u.Host, ","), u.Path, "localhost:59001")
+		pub := discov.NewPublisher(strings.Split(u.Host, ","), u.Path, endpoint)
 		pub.KeepAlive()
 	default:
 		return fmt.Errorf("unknown scheme: %s", u.Scheme)
