@@ -4,16 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"net/url"
-	"strings"
 
 	"github.com/kevwan/gozero-dtm/dtmdriver"
-	_ "github.com/kevwan/gozero-dtm/dtmdriverzero"
+	"github.com/kevwan/gozero-dtm/dtmdriverzero"
 	"github.com/kevwan/gozero-dtm/dtmsdk"
 	"github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp"
 	"github.com/kevwan/gozero-dtm/dtmsvr/svr"
-	"github.com/tal-tech/go-zero/core/discov"
-	"github.com/tal-tech/go-zero/core/logx"
 	"google.golang.org/grpc"
 )
 
@@ -36,16 +32,10 @@ func startRPCSvc(sd *grpc.ServiceDesc, svc interface{}, port int64) {
 
 func main() {
 	startRPCSvc(&dtmsdkimp.DtmSvc_ServiceDesc, &svr.DtmServer{}, 59001)
-	driver := dtmdriver.MustGetDriver("zero")
+	driver := dtmdriver.MustGetDriver(dtmdriverzero.DriverName)
 	driver.RegisterGrpcResolver() // 服务器端，可能有多个driver，需要手动指定使用driver的Resolver
 	// TODO 把本地端口59001启动的DtmServer注册到etcd
-	// driver.RegisterService(dtmsdk.DtmAddr, "localhost:59001")
-	u, err := url.Parse(dtmsdk.DtmAddr)
-	logx.Must(err)
-	if u.Scheme == "etcd" {
-		pub := discov.NewPublisher(strings.Split(u.Host, ","), u.Path, "localhost:59001")
-		pub.KeepAlive()
-	}
+	driver.RegisterService(dtmsdk.DtmAddr, "localhost:59001")
 
 	select {}
 }

@@ -9,12 +9,15 @@ import (
 	"github.com/tal-tech/go-zero/core/discov"
 )
 
-const kindEtcd = "etcd"
+const (
+	DriverName = "go-zero"
+	kindEtcd = "etcd"
+)
 
 type zeroDriver struct{}
 
 func (z *zeroDriver) GetName() string {
-	return "gozero"
+	return DriverName
 }
 
 func (z *zeroDriver) RegisterGrpcResolver() {
