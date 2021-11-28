@@ -3,12 +3,11 @@ module github.com/kevwan/gozero-dtm
 go 1.17
 
 require (
-	github.com/tal-tech/go-zero v1.2.3-0.20211108151213-f8367856e887
+	github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60
 	google.golang.org/grpc v1.42.0
 )
 
 require (
-	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
@@ -18,6 +17,7 @@ require (
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/googleapis/gnostic v0.4.1 // indirect

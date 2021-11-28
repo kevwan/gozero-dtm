@@ -2,8 +2,10 @@ package dtmsdkimp
 
 import (
 	"encoding/json"
+	"net/url"
 	"strings"
 
+	"github.com/tal-tech/go-zero/zrpc"
 	grpc "google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 )
@@ -24,16 +26,21 @@ func PanicIf(cond bool, err error) {
 
 // MustGetConn get grpc conn
 func MustGetConn(grpcServer string) *grpc.ClientConn {
-	conn, err := grpc.Dial(grpcServer, grpc.WithInsecure())
+	cli, err := zrpc.NewClientWithTarget(grpcServer)
 	PanicIf(err != nil, err)
-	return conn
+	return cli.Conn()
 }
 
 // GetServerAndMethod 将grpc的url分解为server和method
 func GetServerAndMethod(grpcURL string) (string, string) {
-	fs := strings.Split(grpcURL, "/")
-	server := fs[0]
-	method := "/" + strings.Join(fs[1:], "/")
+	// caution on wrong and complex grpcURL
+	u, err := url.Parse(grpcURL)
+	if err != nil {
+		panic(err)
+	}
+	index := strings.IndexByte(u.Path[1:], '/') + 1
+	server := u.Scheme + "://" + u.Host + u.Path[:index]
+	method := u.Path[index:]
 	return server, method
 }
 
@@ -62,7 +69,7 @@ func (cb rawCodec) Name() string { return "dtm_raw" }
 
 // MustGetRawConn raw []byte in and out
 func MustGetRawConn(grpcServer string) *grpc.ClientConn {
-	conn, err := grpc.Dial(grpcServer, grpc.WithInsecure(), grpc.WithDefaultCallOptions(grpc.ForceCodec(rawCodec{})))
+	cli, err := zrpc.NewClientWithTarget(grpcServer, zrpc.WithDialOption(grpc.WithDefaultCallOptions(grpc.ForceCodec(rawCodec{}))))
 	PanicIf(err != nil, err)
-	return conn
+	return cli.Conn()
 }

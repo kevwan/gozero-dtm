@@ -10,6 +10,7 @@ import (
 	"github.com/kevwan/gozero-dtm/dtmsdk"
 	"github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp"
 	"github.com/kevwan/gozero-dtm/dtmsvr/svr"
+	"github.com/tal-tech/go-zero/core/logx"
 	"google.golang.org/grpc"
 )
 
@@ -31,6 +32,8 @@ func startRPCSvc(sd *grpc.ServiceDesc, svc interface{}, port int64) {
 }
 
 func main() {
+	logx.DisableStat()
+
 	startRPCSvc(&dtmsdkimp.DtmSvc_ServiceDesc, &svr.DtmServer{}, 59001)
 	driver := dtmdriver.MustGetDriver(dtmdriverzero.DriverName)
 	driver.RegisterGrpcResolver() // 服务器端，可能有多个driver，需要手动指定使用driver的Resolver

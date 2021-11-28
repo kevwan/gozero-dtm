@@ -366,8 +366,8 @@ github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/tal-tech/go-zero v1.2.3-0.20211108151213-f8367856e887 h1:VRNBbVP0W+0hSElmQCmxCwcY+tik9vQJLZfhw32E4jo=
-github.com/tal-tech/go-zero v1.2.3-0.20211108151213-f8367856e887/go.mod h1:A7UM1Ycf8Rxaz8gLwHs45hBIBCOigL4wHncRQkgbp/E=
+github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60 h1:DR7XuRopKoOcOsw+nItFZrZLkteJ9tgwyZ1vquzdbGM=
+github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60/go.mod h1:EHOQsRClBD4svg5mJl8iqkQn5bTMZx+AeHwkQpSjJXg=
 github.com/urfave/cli v1.22.5/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/urfave/cli/v2 v2.3.0/go.mod h1:LJmUH05zAU44vOAcrfzZQKsZbVcdbOG8rtL3/XcUArI=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=
@@ -380,7 +380,6 @@ github.com/yuin/gopher-lua v0.0.0-20200816102855-ee81675732da h1:NimzV1aGyq29m5u
 github.com/yuin/gopher-lua v0.0.0-20200816102855-ee81675732da/go.mod h1:E1AXubJBdNmFERAOucpDIxNzeGfLzg0mYh+UfMWdChA=
 github.com/zeromicro/antlr v0.0.1/go.mod h1:nfpjEwFR6Q4xGDJMcZnCL9tEfQRgszMwu3rDz2Z+p5M=
 github.com/zeromicro/ddl-parser v0.0.0-20210712021150-63520aca7348/go.mod h1:ISU/8NuPyEpl9pa17Py9TBPetMjtsiHrb9f5XGiYbo8=
-github.com/zeromicro/protobuf v0.0.0-20210921042113-636cd51f0c35/go.mod h1:CJvyESptK/6uU5003fPJQ9Hmubl3vRuGqaLgzUU0R7Y=
 go.etcd.io/etcd/api/v3 v3.5.1 h1:v28cktvBq+7vGyJXF8G+rWJmj+1XUmMtqcLnH8hDocM=
 go.etcd.io/etcd/api/v3 v3.5.1/go.mod h1:cbVKeC6lCfl7j/8jBhAK6aIYO9XOjdptoxU/nLQcPvs=
 go.etcd.io/etcd/client/pkg/v3 v3.5.1 h1:XIQcHCFSG53bJETYeRJtIxdLv2EWRGxcfzR8lSnTH4E=

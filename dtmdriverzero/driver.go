@@ -11,7 +11,7 @@ import (
 
 const (
 	DriverName = "go-zero"
-	kindEtcd = "etcd"
+	kindEtcd   = "etcd"
 )
 
 type zeroDriver struct{}
@@ -33,7 +33,7 @@ func (z *zeroDriver) RegisterService(target string, endpoint string) error {
 
 	switch u.Scheme {
 	case kindEtcd:
-		pub := discov.NewPublisher(strings.Split(u.Host, ","), u.Path, endpoint)
+		pub := discov.NewPublisher(strings.Split(u.Host, ","), strings.TrimPrefix(u.Path, "/"), endpoint)
 		pub.KeepAlive()
 	default:
 		return fmt.Errorf("unknown scheme: %s", u.Scheme)

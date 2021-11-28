@@ -28,6 +28,7 @@ func main() {
 	srv := server.NewTransSvcServer(ctx)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
+		reflection.Register(grpcServer)
 		pb.RegisterTransSvcServer(grpcServer, srv)
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {

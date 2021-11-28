@@ -1,2 +1,6 @@
 Name: trans.rpc
 ListenOn: 127.0.0.1:50091
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: trans
