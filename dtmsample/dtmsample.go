@@ -9,7 +9,7 @@ import (
 	trans "github.com/kevwan/gozero-dtm/trans/pb"
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/tal-tech/go-zero/zrpc/resolver"
 )
 
 var (
@@ -17,10 +17,6 @@ var (
 	outReq     = &trans.AdjustInfo{Amount: 30, UserID: 1}
 	inReq      = &trans.AdjustInfo{Amount: 30, UserID: 2}
 )
-
-type Config struct {
-	TransRpc zrpc.RpcClientConf
-}
 
 func sagaRawCase() {
 	saga := dtmsdk.NewSagaGrpc("localhost:59001", "gid1").
@@ -41,11 +37,12 @@ func sagaCase(transsvr string) {
 func main() {
 	flag.Parse()
 
-	var c Config
+	var c dtmdriverzero.RpcConfig
 	conf.MustLoad(*configFile, &c)
 
 	// sagaRawCase()
-	target, err := dtmdriverzero.BuildTarget(c.TransRpc)
+	resolver.Register()
+	target, err := dtmdriverzero.BuildTarget(c)
 	logx.Must(err)
 	sagaCase(target)
 }

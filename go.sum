@@ -366,8 +366,8 @@ github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60 h1:DR7XuRopKoOcOsw+nItFZrZLkteJ9tgwyZ1vquzdbGM=
-github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60/go.mod h1:EHOQsRClBD4svg5mJl8iqkQn5bTMZx+AeHwkQpSjJXg=
+github.com/tal-tech/go-zero v1.2.4-0.20211201122215-9d528dddd620 h1:gPAm51kYmgRaoG8LF7rwu7079rawTgcSP4BIoebsWyU=
+github.com/tal-tech/go-zero v1.2.4-0.20211201122215-9d528dddd620/go.mod h1:EHOQsRClBD4svg5mJl8iqkQn5bTMZx+AeHwkQpSjJXg=
 github.com/urfave/cli v1.22.5/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/urfave/cli/v2 v2.3.0/go.mod h1:LJmUH05zAU44vOAcrfzZQKsZbVcdbOG8rtL3/XcUArI=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=

@@ -14,7 +14,19 @@ const (
 	kindEtcd   = "etcd"
 )
 
-type zeroDriver struct{}
+type (
+	zeroDriver struct{}
+
+	RpcConfig  struct {
+		Etcd      discov.EtcdConf `json:",optional"`
+		Endpoints []string        `json:",optional"`
+		Target    string          `json:",optional"`
+		App       string          `json:",optional"`
+		Token     string          `json:",optional"`
+		NonBlock  bool            `json:",optional"`
+		Timeout   int64           `json:",default=2000"`
+	}
+)
 
 func (z *zeroDriver) GetName() string {
 	return DriverName

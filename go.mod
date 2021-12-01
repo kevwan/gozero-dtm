@@ -3,7 +3,7 @@ module github.com/kevwan/gozero-dtm
 go 1.17
 
 require (
-	github.com/tal-tech/go-zero v1.2.4-0.20211128120818-d828c3f37e60
+	github.com/tal-tech/go-zero v1.2.4-0.20211201122215-9d528dddd620
 	google.golang.org/grpc v1.42.0
 )
 

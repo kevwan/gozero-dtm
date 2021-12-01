@@ -1,5 +1,4 @@
-TransRpc:
-  Etcd:
-    Hosts:
+Etcd:
+  Hosts:
     - 127.0.0.1:2379
-    Key: trans
+  Key: trans
