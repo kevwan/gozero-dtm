@@ -7,7 +7,6 @@ import (
 
 	"github.com/kevwan/gozero-dtm/dtmdriver"
 	"github.com/tal-tech/go-zero/core/discov"
-	_ "github.com/tal-tech/go-zero/zrpc"
 )
 
 const (

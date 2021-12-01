@@ -1,14 +1,26 @@
 package main
 
 import (
-	_ "github.com/kevwan/gozero-dtm/dtmdriverzero"
+	"flag"
+
+	"github.com/kevwan/gozero-dtm/dtmdriverzero"
 	"github.com/kevwan/gozero-dtm/dtmsdk"
 	"github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp"
 	trans "github.com/kevwan/gozero-dtm/trans/pb"
+	"github.com/tal-tech/go-zero/core/conf"
+	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/tal-tech/go-zero/zrpc"
 )
 
-var outReq = &trans.AdjustInfo{Amount: 30, UserID: 1}
-var inReq = &trans.AdjustInfo{Amount: 30, UserID: 2}
+var (
+	configFile = flag.String("f", "etc/config.yaml", "the config file")
+	outReq     = &trans.AdjustInfo{Amount: 30, UserID: 1}
+	inReq      = &trans.AdjustInfo{Amount: 30, UserID: 2}
+)
+
+type Config struct {
+	TransRpc zrpc.RpcClientConf
+}
 
 func sagaRawCase() {
 	saga := dtmsdk.NewSagaGrpc("localhost:59001", "gid1").
@@ -18,8 +30,7 @@ func sagaRawCase() {
 	dtmsdkimp.PanicIf(err != nil, err)
 }
 
-func sagaCase() {
-	transsvr := "etcd://127.0.0.1:2379/trans" // TODO 这个地方能够从trans的客户端便捷的获取url，而不是写死或手动拼凑
+func sagaCase(transsvr string) {
 	saga := dtmsdk.NewSagaGrpc(dtmsdk.DtmAddr, "gid2").
 		Add(transsvr+"/trans.TransSvc/TransOut", transsvr+"/TransOutRevert", outReq).
 		Add(transsvr+"/trans.TransSvc/TransIn", transsvr+"/TransInRevert", inReq)
@@ -28,6 +39,13 @@ func sagaCase() {
 }
 
 func main() {
+	flag.Parse()
+
+	var c Config
+	conf.MustLoad(*configFile, &c)
+
 	// sagaRawCase()
-	sagaCase()
+	target, err := dtmdriverzero.BuildTarget(c.TransRpc)
+	logx.Must(err)
+	sagaCase(target)
 }
