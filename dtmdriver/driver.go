@@ -1,8 +1,6 @@
 package dtmdriver
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // Driver interface to do service register and discover
 type Driver interface {

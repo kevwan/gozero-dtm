@@ -7,6 +7,7 @@ import (
 
 	"github.com/kevwan/gozero-dtm/dtmdriver"
 	"github.com/tal-tech/go-zero/core/discov"
+	_ "github.com/tal-tech/go-zero/zrpc"
 )
 
 const (
@@ -21,7 +22,7 @@ func (z *zeroDriver) GetName() string {
 }
 
 func (z *zeroDriver) RegisterGrpcResolver() {
-	// TODO, 注册gozero支持的几种schema，直连/etcd/k8s
+	// import is enough, nothing to do here
 }
 
 func (z *zeroDriver) RegisterService(target string, endpoint string) error {

@@ -5,7 +5,6 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/tal-tech/go-zero/zrpc"
 	grpc "google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 )
@@ -26,9 +25,9 @@ func PanicIf(cond bool, err error) {
 
 // MustGetConn get grpc conn
 func MustGetConn(grpcServer string) *grpc.ClientConn {
-	cli, err := zrpc.NewClientWithTarget(grpcServer)
+	conn, err := grpc.Dial(grpcServer, grpc.WithInsecure())
 	PanicIf(err != nil, err)
-	return cli.Conn()
+	return conn
 }
 
 // GetServerAndMethod 将grpc的url分解为server和method
@@ -69,7 +68,7 @@ func (cb rawCodec) Name() string { return "dtm_raw" }
 
 // MustGetRawConn raw []byte in and out
 func MustGetRawConn(grpcServer string) *grpc.ClientConn {
-	cli, err := zrpc.NewClientWithTarget(grpcServer, zrpc.WithDialOption(grpc.WithDefaultCallOptions(grpc.ForceCodec(rawCodec{}))))
+	conn, err := grpc.Dial(grpcServer, grpc.WithInsecure(), grpc.WithDefaultCallOptions(grpc.ForceCodec(rawCodec{})))
 	PanicIf(err != nil, err)
-	return cli.Conn()
+	return conn
 }

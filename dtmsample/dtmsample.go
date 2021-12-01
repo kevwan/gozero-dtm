@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/kevwan/gozero-dtm/dtmdriverzero"
 	"github.com/kevwan/gozero-dtm/dtmsdk"
 	"github.com/kevwan/gozero-dtm/dtmsdk/dtmsdkimp"
 	trans "github.com/kevwan/gozero-dtm/trans/pb"
